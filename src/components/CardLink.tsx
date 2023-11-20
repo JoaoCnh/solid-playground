@@ -1,4 +1,5 @@
 import { Component, Show, createSignal } from "solid-js";
+import { A } from "solid-start";
 import { Image, ViteImageToolsSrc } from "./Image";
 import { easeInOutCubic } from "~/lib/easings/easeInOutCubic";
 
@@ -89,19 +90,21 @@ export const CardLink: Component<{
   }
 
   return (
-    <a
+    <A
       href={href}
       class="relative block max-w-sm h-full bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 overflow-hidden"
       onMouseEnter={animateIn}
       onMouseLeave={animateOut}
     >
-      <Show when={!!image}>
-        <Image
-          src={image!}
-          alt={title}
-          sizes={sizes}
-          class="w-full h-full object-cover rounded-lg transition hover:scale-125"
-        />
+      <Show when={image}>
+        {(src) => (
+          <Image
+            src={src()}
+            alt={title}
+            sizes={sizes}
+            class="w-full h-full object-cover rounded-lg transition hover:scale-125"
+          />
+        )}
       </Show>
 
       <div class="absolute inset-0 p-2 flex items-end rounded-lg md:hidden">
@@ -118,6 +121,6 @@ export const CardLink: Component<{
           {title}
         </h5>
       </div>
-    </a>
+    </A>
   );
 };
