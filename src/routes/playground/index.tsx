@@ -3,28 +3,10 @@ import { useRouteData } from "solid-start";
 import { createServerData$ } from "solid-start/server";
 import { AspectRatio } from "~/components/AspectRatio";
 import { CardLink } from "~/components/CardLink";
-import { unslugify } from "~/lib/unslugify";
-import { mapDir } from "~/lib/server/map-dir";
-import type { ViteImageToolsSrc } from "~/components/Image";
+import { playgrounds } from "~/lib/data/playgrounds";
 
 export function routeData() {
-  const experiments = createServerData$(() => {
-    const images = import.meta.glob(
-      "~/lib/assets/*.{avif,gif,heif,jpeg,jpg,png,tiff,webp}",
-      {
-        eager: true,
-        import: "default",
-      }
-    );
-
-    return mapDir("src/routes/playground", (dirName) => ({
-      name: dirName,
-      label: unslugify(dirName),
-      url: `/playground/${dirName}`,
-      image: images[`/src/lib/assets/${dirName}.jpg`] as ViteImageToolsSrc,
-    }));
-  });
-
+  const experiments = createServerData$(() => playgrounds);
   return { experiments };
 }
 
