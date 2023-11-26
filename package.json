@@ -7,7 +7,7 @@
   },
   "type": "module",
   "devDependencies": {
-    "@types/node": "^20.9.1",
+    "@types/node": "^20.10.0",
     "autoprefixer": "^10.4.15",
     "postcss": "^8.4.28",
     "solid-start-node": "^0.3.10",
@@ -15,12 +15,12 @@
     "tailwindcss": "^3.3.3",
     "typescript": "^4.9.5",
     "vite": "^4.4.9",
-    "vite-imagetools": "^6.2.4"
+    "vite-imagetools": "^6.2.5"
   },
   "dependencies": {
     "@solidjs/meta": "^0.29.1",
-    "@solidjs/router": "^0.8.3",
-    "solid-js": "^1.8.5",
+    "@solidjs/router": "^0.9.1",
+    "solid-js": "^1.8.6",
     "solid-start": "^0.3.10"
   },
   "engines": {
